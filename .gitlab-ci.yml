@@ -1,0 +1,24 @@
+stages:
+- linting
+- test
+
+flake8:
+  stage: linting
+  image: python:latest
+  script:
+    - pip install flake8==6.1.0 pep8-naming==0.13.3 flake8-quotes==3.3.2 flake8-import-order==0.18.2
+    - flake8 --ignore=I202 --import-order-style pep8 --exclude 'migrations' --verbose .
+
+black:
+  stage: linting
+  image: registry.gitlab.com/pipeline-components/black:latest
+  script:
+    - black -S --check --line-length 79 --verbose .
+
+django-tests:
+  stage: test
+  image: python:latest
+  script:
+    - pip install -r ./requirements/test.txt
+    - cd ./lyceum/
+    - python manage.py test

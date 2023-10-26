@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+Список элементов
+
+<div class="row">
+  {% for item in items %}
+    {% include "includes/item_card.html" with item=item only %}
+  {% endfor %}
+</div>
+
+{% endblock %}

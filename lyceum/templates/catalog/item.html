@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<div class="container" data-bs-theme="dark">
+    <div class="card">
+        <div class="container-fliud">
+            <div class="row">
+                <div class="preview col-md-3">
+                    <div class="preview-pic tab-content">
+						{% load thumbnail %}
+						{% thumbnail item.main_image.get_image_x300 "300x300" as thumb %}
+							<div class="tab-pane active" id="pic-1"><img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}"/></div>
+						{% endthumbnail %}
+                    </div>
+                </div>
+                <div class="details col-md-9">
+                    <h3 class="product-title">{{ item.name }}</h3>
+                    <p class="product-description">{{ item.text }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
