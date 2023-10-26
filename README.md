@@ -40,10 +40,19 @@
 
 ## Creating translations
 1. Create "locale" directory
-2. Add directory with yor language code
-3. run ```django-admin makemessages -a```
+2. To create or update a message file, run this command:
+    ```
+    django-admin makemessages -l {language_code}
+   ```
+3. To reexamine all source code and templates for new translation strings and update all message files for all languages, run this:
+    ```
+   django-admin makemessages -a
+   ```
 4. Add 'msgid' and 'msgstr'
-5. run ```python manage.py compilemessages```
+5. Compile messages with: 
+   ```
+   django-admin compilemessages
+   ```
 
 # Database ER
 ![ER](ER.jpg)
