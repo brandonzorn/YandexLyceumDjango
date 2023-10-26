@@ -1,5 +1,6 @@
 __all__ = []
 import re
+from datetime import datetime
 
 
 def normalize_text(text: str):
@@ -25,3 +26,8 @@ def normalize_text(text: str):
     # Удаление знаков препинания
     text = re.sub(r'[^\w\s]', '', text)
     return text
+
+
+def get_server_time_context():
+    context = {'server_time': str(datetime.now().year)}
+    return context

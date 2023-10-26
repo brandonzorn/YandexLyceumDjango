@@ -2,10 +2,12 @@ __all__ = []
 from django.http import HttpResponse
 from django.shortcuts import render
 
+import core.utils
+
 
 def home(request):
     template = 'homepage/homepage.html'
-    context = {}
+    context = core.utils.get_server_time_context()
     return render(request, template, context)
 
 

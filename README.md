@@ -38,7 +38,7 @@
 8. Open your web browser and go to http://localhost:8000/ to view the project.
 
 
-## Creating translation
+## Creating translations
 1. Create "locale" directory
 2. Add directory with yor language code
 3. run ```django-admin makemessages -a```
