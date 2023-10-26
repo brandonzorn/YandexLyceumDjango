@@ -25,4 +25,3 @@ def normalize_text(text: str):
     # Удаление знаков препинания
     text = re.sub(r'[^\w\s]', '', text)
     return text
-
