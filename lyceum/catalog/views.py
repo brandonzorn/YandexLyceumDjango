@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 from catalog import models
-import core.utils
 
 
 def item_list(request):
@@ -19,7 +18,7 @@ def item_detail(request, item_index):
         item = models.Item.objects.get(pk=item_index)
     except models.Item.DoesNotExist:
         item = None
-    context = {'item': item} | core.utils.get_server_time_context()
+    context = {'item': item}
     return render(request, template, context)
 
 
