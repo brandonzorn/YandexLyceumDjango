@@ -2,6 +2,7 @@ __pycache__/
 *.sqlite3
 *.py[cod]
 *$py.class
+*.mo
 .idea/
 .vscode/
 .env
