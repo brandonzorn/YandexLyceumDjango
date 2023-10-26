@@ -4,19 +4,21 @@
 <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
     <div id="footer_content" class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
         <script>
-              var year = new Date().getFullYear();
-              var serverTime = "{{ server_time }}";
+              var userTime = new Date().getTime();
+              var serverTime = new Date("{% now "m\/\/d\/Y" %}");
+
               var footer = document.getElementById("footer_content");
-              var timeDiff = Math.abs((new Date(serverTime)).getTime() - (new Date(year)).getTime());
-              if (timeDiff == 0) {
-                footer.innerHTML = year;
+
+              var timeDiff = Math.abs(userTime - serverTime);
+              if (timeDiff > 24) {
+                footer.innerHTML = serverTime.getFullYear();
               }
               else {
-                footer.innerHTML = serverTime;
+                footer.innerHTML = userTime.getFullYear();
               }
         </script>
         <noscript>
-            <p id="server_time">{{ server_time }}</p>
+            <p id="server_time">{% now "Y" %}</p>
         </noscript>
     </div>
 </footer>

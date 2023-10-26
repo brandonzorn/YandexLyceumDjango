@@ -1,5 +1,4 @@
 __all__ = []
-from datetime import datetime
 import re
 
 
@@ -27,7 +26,3 @@ def normalize_text(text: str):
     text = re.sub(r'[^\w\s]', '', text)
     return text
 
-
-def get_server_time_context():
-    context = {'server_time': str(datetime.now().year)}
-    return context

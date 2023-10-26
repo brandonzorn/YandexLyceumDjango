@@ -9,7 +9,7 @@ import core.utils
 def item_list(request):
     template = 'catalog/item_list.html'
     items = models.Item.objects.all()
-    context = {'items': items} | core.utils.get_server_time_context()
+    context = {'items': items}
     return render(request, template, context)
 
 
