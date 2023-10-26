@@ -1,6 +1,6 @@
 __all__ = []
-import re
 from datetime import datetime
+import re
 
 
 def normalize_text(text: str):
