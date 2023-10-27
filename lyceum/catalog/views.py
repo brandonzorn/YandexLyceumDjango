@@ -16,7 +16,7 @@ def item_detail(request, item_index):
     template = 'catalog/item.html'
     item = models.Item.objects.filter(pk=item_index).first()
     context = {'item': item}
-    return render(request, template, context, status=404)
+    return render(request, template, context)
 
 
 def item_re(request, num):
