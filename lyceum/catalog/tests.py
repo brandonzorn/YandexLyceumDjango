@@ -10,6 +10,23 @@ from catalog import models
 
 
 class StaticURLTests(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.category = models.Category.objects.create(
+            name='Электроника',
+            slug='elektronika',
+        )
+        cls.category.full_clean()
+        cls.category.save()
+        cls.item = models.Item(
+            name='TestItem',
+            category=cls.category,
+            text='Text превосходно',
+        )
+        cls.item.full_clean()
+        cls.item.save()
+
     def test_catalog_endpoint(self):
         response = Client().get('/catalog/')
         self.assertEqual(response.status_code, HTTPStatus.OK)
@@ -48,6 +65,23 @@ class StaticURLTests(TestCase):
 
 
 class ReverseURLTests(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.category = models.Category.objects.create(
+            name='Электроника',
+            slug='elektronika',
+        )
+        cls.category.full_clean()
+        cls.category.save()
+        cls.item = models.Item(
+            name='TestItem',
+            category=cls.category,
+            text='Text превосходно',
+        )
+        cls.item.full_clean()
+        cls.item.save()
+
     def test_item_detail_reverse_url(self):
         url = reverse('catalog:item_detail', args=[1])
         response = Client().get(url)

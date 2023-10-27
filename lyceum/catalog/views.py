@@ -1,5 +1,5 @@
 __all__ = []
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.shortcuts import render
 
 from catalog import models
@@ -15,6 +15,8 @@ def item_list(request):
 def item_detail(request, item_index):
     template = 'catalog/item.html'
     item = models.Item.objects.filter(pk=item_index).first()
+    if not item:
+        raise Http404
     context = {'item': item}
     return render(request, template, context)
 
