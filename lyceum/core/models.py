@@ -20,3 +20,14 @@ class AbstractModel(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class AbstractAttributeModel(AbstractModel):
+    normalized_name = models.CharField(
+        max_length=200,
+        unique=True,
+        help_text='Уникальное имя',
+    )
+
+    class Meta:
+        abstract = True

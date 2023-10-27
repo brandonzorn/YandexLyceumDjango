@@ -11,18 +11,13 @@ from core import models as core_models
 from core import utils as core_utils
 
 
-class Tag(core_models.AbstractModel):
+class Tag(core_models.AbstractAttributeModel):
     slug = models.CharField(
         'слаг',
         max_length=200,
         unique=True,
         validators=[validators.chars_validator],
         help_text='Слаг',
-    )
-    normalized_name = models.CharField(
-        max_length=200,
-        unique=True,
-        help_text='Уникальное имя',
     )
 
     class Meta:
@@ -42,7 +37,7 @@ class Tag(core_models.AbstractModel):
         super().clean_fields(exclude)
 
 
-class Category(core_models.AbstractModel):
+class Category(core_models.AbstractAttributeModel):
     slug = models.CharField(
         'слаг',
         max_length=200,
@@ -55,11 +50,6 @@ class Category(core_models.AbstractModel):
         default=100,
         validators=[validators.RangeValidator(1, 32767)],
         help_text='Вес',
-    )
-    normalized_name = models.CharField(
-        max_length=200,
-        unique=True,
-        help_text='Уникальное имя',
     )
 
     class Meta:
