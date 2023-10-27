@@ -4,21 +4,26 @@
 <footer class="bd-footer py-4 py-md-5 mt-5 bg-body-tertiary">
     <div id="footer_content" class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
         <script>
-              var userTime = new Date().getTime();
-              var serverTime = new Date("{% now "m\/\/d\/Y" %}");
+              var userTime = new Date();
+              var serverTime = new Date("{% now "m\/\/d\/Y H\:i" %}");
 
+                console.log(userTime);
+                console.log(serverTime);
               var footer = document.getElementById("footer_content");
+              const formatter = new Intl.DateTimeFormat('ru-RU', {year: 'numeric',
+               hour: '2-digit', minute: '2-digit'});
 
               var timeDiff = Math.abs(userTime - serverTime);
+              console.log(timeDiff / (3600000));
               if (timeDiff > 24) {
-                footer.innerHTML = serverTime.getFullYear();
+                footer.innerHTML = formatter.format(serverTime);
               }
               else {
-                footer.innerHTML = userTime.getFullYear();
+                footer.innerHTML = formatter.format(userTime);
               }
         </script>
         <noscript>
-            <p id="server_time">{% now "Y" %}</p>
+            <p id="server_time">{% now "Y H\:i" %}</p>
         </noscript>
     </div>
 </footer>
