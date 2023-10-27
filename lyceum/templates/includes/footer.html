@@ -6,15 +6,12 @@
         <script>
               var userTime = new Date();
               var serverTime = new Date("{% now "m\/\/d\/Y H\:i" %}");
-
-                console.log(userTime);
-                console.log(serverTime);
               var footer = document.getElementById("footer_content");
               const formatter = new Intl.DateTimeFormat('ru-RU', {year: 'numeric',
                hour: '2-digit', minute: '2-digit'});
 
-              var timeDiff = Math.abs(userTime - serverTime);
-              console.log(timeDiff / (3600000));
+              var timeDiff = (Math.abs(userTime - serverTime)) / 3600000;
+
               if (timeDiff > 24) {
                 footer.innerHTML = formatter.format(serverTime);
               }
