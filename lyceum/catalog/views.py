@@ -7,7 +7,7 @@ from catalog import models
 
 def item_list(request):
     template = 'catalog/item_list.html'
-    items = models.Item.objects.all()
+    items = models.Item.objects.filter(is_published=True)
     context = {'items': items}
     return render(request, template, context)
 
