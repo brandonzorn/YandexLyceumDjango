@@ -14,12 +14,9 @@ def item_list(request):
 
 def item_detail(request, item_index):
     template = 'catalog/item.html'
-    try:
-        item = models.Item.objects.get(pk=item_index)
-    except models.Item.DoesNotExist:
-        item = None
+    item = models.Item.objects.filter(pk=item_index).first()
     context = {'item': item}
-    return render(request, template, context)
+    return render(request, template, context, status=404)
 
 
 def item_re(request, num):
