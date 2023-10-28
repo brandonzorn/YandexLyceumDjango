@@ -10,8 +10,7 @@
 <div class="row">
     {% for item in items %}
         {% include "includes/item_card.html" with item=item only %}
-    {% endfor %}
-    {% if not items%}
+    {% empty %}
         <div class="container my-5">
             <div class="bg-body-tertiary p-5 rounded">
                 <div class="col-sm-8 py-5 mx-auto">
@@ -20,7 +19,7 @@
                 </div>
             </div>
         </div>
-    {% endif %}
+    {% endfor %}
 </div>
 
 {% endblock %}

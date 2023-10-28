@@ -14,7 +14,7 @@ def item_list(request):
 
 def item_detail(request, item_index):
     template = 'catalog/item.html'
-    item = models.Item.objects.filter(pk=item_index).first()
+    item = models.Item.objects.filter(pk=item_index, is_published=True).first()
     if not item:
         raise Http404
     context = {'item': item}
