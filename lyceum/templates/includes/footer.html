@@ -7,7 +7,7 @@
               var userTime = new Date();
               var serverTime = new Date("{% now "m\/\/d\/Y H\:i" %}");
               var footer = document.getElementById("footer_content");
-              const formatter = new Intl.DateTimeFormat('ru-RU', {year: 'numeric',
+              const formatter = new Intl.DateTimeFormat('ru-RU', {year: 'numeric', month: 'numeric', day: 'numeric',
                hour: '2-digit', minute: '2-digit'});
 
               var timeDiff = (Math.abs(userTime - serverTime)) / 3600000;
