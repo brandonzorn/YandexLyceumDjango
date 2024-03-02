@@ -4,7 +4,7 @@
 ## Installation
 1. Clone the repository:
     ```
-    git clone git@gitlab.crja72.ru:django_2023/students/55364-v.klimenko.2137-gmail.com-47535.git
+    git clone https://gitverse.ru/sc/brandonzorn/YandexLyceumDjango.git
     ```
 2. Navigate to the project directory:
     ```
